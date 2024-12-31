@@ -16,9 +16,11 @@ import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var toolbarMain: Toolbar
+    private lateinit var startBtn:Button
+    private lateinit var headerTV:TextView
+    private lateinit var logoIV:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,38 +30,37 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//Тулбар
+        //Тулбар
         toolbarMain = findViewById(R.id.toolbarMain)
         setSupportActionBar(toolbarMain)
         title = "  Продовольственная корзина"
         toolbarMain.subtitle = " Версия 1. Анимация 2"
         toolbarMain.setLogo(R.drawable.shop)
-
-        val startBtn = findViewById<Button>(R.id.btn_start)
-        val headerTV = findViewById<TextView>(R.id.tv_header)
-        val logoIV = findViewById<ImageView>(R.id.iv_logo)
-
+        //Привязываем кнопки и поля
+        startBtn = findViewById(R.id.btn_start)
+        headerTV = findViewById(R.id.tv_header)
+        logoIV = findViewById(R.id.iv_logo)
+        //Запускаем анимацию заставки
         headerTV.translationY = -400f
-
         headerTV.animate().apply {
             duration = 1000
             translationY(0f)
         }
-
+        //Анимация логотипа магазина
         logoIV.rotationY = -360f
         logoIV.animate().apply {
             startDelay = 1000
             duration = 2000
             rotationY(0f)
         }
-
+        //Анимация кнопки
         startBtn.alpha = 0f
         startBtn.animate().apply {
             startDelay = 3000
             duration = 1000
             alphaBy(1f)
         }
-
+        //Обработка кнопки
         startBtn.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.cl_main, MarketFragment())
@@ -68,7 +69,6 @@ class MainActivity : AppCompatActivity() {
             headerTV.visibility = View.GONE
             logoIV.visibility = View.GONE
         }
-
     }
 
     //Инициализация Меню

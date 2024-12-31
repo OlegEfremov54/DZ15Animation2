@@ -10,9 +10,6 @@ import android.widget.TextView
 
 class CheckFragment : Fragment() {
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,16 +22,15 @@ class CheckFragment : Fragment() {
         val checkTV = view.findViewById<TextView>(R.id.tv_check)
         checkTV.text = generateCheck()
     }
-
+    // Генерация Чека, случайного номера чека и подготовка к выдаче
     private fun generateCheck(): String {
 
         return getString(R.string.tv_check) + (1..10000).random() +
                 "\n\n" + toString(Products.getCartWithCount()) +
                 "\n\n" + "ИТОГО: ${getSummaryOfCart(Products.getCartWithCount())} $"
 
-
     }
-
+    //Метод вывода наименования продукта, количества и стоимости
     private fun toString(map: Map<Product, Int>) : String {
         val stringBuilder = StringBuilder()
         var counter = 0
@@ -44,7 +40,7 @@ class CheckFragment : Fragment() {
         }
         return stringBuilder.toString()
     }
-
+    //Метод суммирования составляющих чека
     private fun getSummaryOfCart(map: Map<Product, Int>) : Int {
         var sum = 0
         map.forEach {key, value ->

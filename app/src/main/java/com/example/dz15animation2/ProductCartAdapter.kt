@@ -13,6 +13,7 @@ class ProductCartAdapter (private val context: Context, private var map: Map<Pro
     private var _productClickListener: OnItemClickListener? = null;
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val nameTV: TextView = itemView.findViewById(R.id.tv_name)
         private val imageIV: ImageView = itemView.findViewById(R.id.iv_image)
         private val priceTV: TextView = itemView.findViewById(R.id.tv_price)
@@ -38,11 +39,11 @@ class ProductCartAdapter (private val context: Context, private var map: Map<Pro
             _productClickListener?.onItemClick(position);
         }
     }
-
+    //Размер массива
     override fun getItemCount(): Int {
         return map.size
     }
-
+    //ИНтерфейс клика по позиции
     fun interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
@@ -50,7 +51,7 @@ class ProductCartAdapter (private val context: Context, private var map: Map<Pro
     fun setOnItemClickListener(itemClickListener: OnItemClickListener) {
         _productClickListener = itemClickListener
     }
-
+    //Обновление экрана
     fun updateMap(updatedMap: Map<Product, Int>) {
         map = updatedMap
         notifyDataSetChanged()
