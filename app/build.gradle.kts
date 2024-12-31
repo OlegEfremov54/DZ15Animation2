@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.dz15animation2"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.dz15animation2"

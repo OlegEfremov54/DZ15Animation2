@@ -23,7 +23,7 @@
         android:contentDescription="@string/your_cart"
         android:focusable="true"
         android:pointerIcon="arrow"
-        android:src="@drawable/ic_check"
+        android:src="@drawable/baseline_check_circle_24"
         android:text="@string/fab_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

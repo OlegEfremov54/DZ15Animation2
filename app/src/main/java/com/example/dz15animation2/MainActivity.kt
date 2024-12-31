@@ -3,6 +3,10 @@ package com.example.dz15animation2
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +34,40 @@ class MainActivity : AppCompatActivity() {
         title = "  Продовольственная корзина"
         toolbarMain.subtitle = " Версия 1. Анимация 2"
         toolbarMain.setLogo(R.drawable.shop)
+
+        val startBtn = findViewById<Button>(R.id.btn_start)
+        val headerTV = findViewById<TextView>(R.id.tv_header)
+        val logoIV = findViewById<ImageView>(R.id.iv_logo)
+
+        headerTV.translationY = -400f
+
+        headerTV.animate().apply {
+            duration = 1000
+            translationY(0f)
+        }
+
+        logoIV.rotationY = -360f
+        logoIV.animate().apply {
+            startDelay = 1000
+            duration = 2000
+            rotationY(0f)
+        }
+
+        startBtn.alpha = 0f
+        startBtn.animate().apply {
+            startDelay = 3000
+            duration = 1000
+            alphaBy(1f)
+        }
+
+        startBtn.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.cl_main, MarketFragment())
+                .commit()
+            startBtn.visibility = View.GONE
+            headerTV.visibility = View.GONE
+            logoIV.visibility = View.GONE
+        }
 
     }
 
